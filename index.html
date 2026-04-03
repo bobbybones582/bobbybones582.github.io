@@ -57,7 +57,7 @@
         .brand { font-size: 24px; font-weight: 800; color: var(--accent); font-style: italic; }
         .user-nav { display: flex; align-items: center; gap: 15px; }
         .balance { font-size: 18px; font-weight: 600; color: white; }
-        .pfp {
+        .header-pfp {
             width: 36px; height: 36px; border-radius: 50%; background-color: #555;
             display: flex; align-items: center; justify-content: center; font-size: 18px; border: 2px solid var(--accent);
         }
@@ -74,56 +74,106 @@
             border: 1px solid var(--border-color);
         }
 
+        /* --- Pickem Grid Layout --- */
+        .pickem-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns for a row */
+            gap: 10px; /* Space between cards */
+            margin-bottom: 20px;
+        }
+
         /* --- Pickem Card Styling --- */
         .pickem-card {
-            padding: 0; /* Custom inner spacing */
+            padding: 10px;
+            max-width: none; /* Let the grid handle width */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content */
+            aspect-ratio: 1 / 1.4; /* Aspect ratio to make it more vertical/square-ish */
         }
-        .pickem-header {
-            display: flex; align-items: center; gap: 10px; padding: 15px 20px;
-            border-bottom: 1px solid var(--border-color);
-            background: rgba(0,0,0,0.1); /* Slight darker background */
+
+        /* Profile Image Container */
+        .pickem-pfp-container {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            background-color: #555;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
         }
-        .pickem-header .pfp { margin: 0; width: 30px; height: 30px; font-size: 16px;}
-        .pickem-header .matchup-detail { font-size: 14px; font-weight: 600; color: var(--text-muted); }
-        
-        .pickem-pfp {
-            width: 100%; max-height: 250px; display: block; border-bottom: 1px solid var(--border-color);
-            object-fit: cover; /* Fill space while maintaining aspect */
+
+        /* Subject Details */
+        .pickem-subject-details {
+            text-align: center;
+            margin-bottom: 15px;
+            width: 100%;
         }
-        
-        .pickem-info { padding: 20px; text-align: left; }
-        
-        .matchup-title { font-size: 18px; font-weight: 700; margin-bottom: 5px; color: white;}
-        .matchup-time { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; }
-        
-        /* Stat Presentation (like reference) */
+        .subject-name {
+            font-size: 16px;
+            font-weight: 700;
+            display: block;
+            color: white;
+        }
+        .subject-details {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        /* Stat Presentation (like reference) - make it more compact and vertical */
         .stat-container {
-            display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; text-align: center;
-            margin-bottom: 20px; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 15px 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
         }
-        .stat-icon { font-size: 20px; color: var(--text-muted); }
-        .stat-value { font-size: 32px; font-weight: 800; color: white; }
+        .stat-top-icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .stat-icon { font-size: 16px; color: var(--text-muted); }
         .stat-symbol-in-circle {
             width: 18px; height: 18px; border-radius: 50%; background-color: #555;
             display: flex; align-items: center; justify-content: center; font-size: 10px; border: 1px solid var(--accent);
         }
-        .stat-name { font-size: 14px; color: var(--text-muted); font-weight: 600; width: 100%; text-transform: uppercase; margin-top: 5px; }
+        .stat-value { font-size: 24px; font-weight: 800; color: white; }
+        .stat-name { font-size: 12px; color: var(--text-muted); font-weight: 600; width: 100%; text-transform: uppercase; margin-top: 0; }
         
-        /* Pick Buttons (like reference) */
+        /* Pick Buttons (like reference) - make them side-by-side and compact */
         .pick-buttons {
-            display: flex; flex-direction: column; gap: 10px;
+            display: flex;
+            flex-direction: row; /* Row instead of column */
+            gap: 5px;
+            width: 100%;
+            margin-top: auto; /* Push to bottom of card */
         }
         .pickem-btn {
-            display: flex; justify-content: space-between; align-items: center; padding: 12px;
-            font-weight: bold; border-radius: 6px; width: 100%; font-size: 16px; margin: 0; background-color: var(--bg-dark); border: 1px solid var(--border-color); color: white; cursor: pointer; transition: background 0.2s;
+            flex: 1; /* Each button takes half width */
+            padding: 8px;
+            font-size: 12px;
+            justify-content: center;
+            background-color: var(--bg-dark); border: 1px solid var(--border-color); color: white; cursor: pointer; transition: background 0.2s;
+            border-radius: 6px;
         }
-        .pickem-btn span:first-child { display: flex; align-items: center; gap: 8px; }
+        .pickem-btn span:first-child { display: flex; align-items: center; gap: 4px; font-size: 10px; }
+        .pickem-btn .odds-value { font-size: 12px; color: var(--accent); }
         
         .pickem-btn:active { background-color: var(--accent); color: black; }
-        .odds-value { color: var(--accent); }
         .pickem-btn:active .odds-value { color: black; }
 
-        /* --- Traditional Sportsbook Cards --- */
+        /* Traditional Sportsbook Cards */
         .classic-card { padding: 15px; }
         .classic-header { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 10px; text-transform: uppercase;}
         .classic-title { font-size: 16px; font-weight: 600; margin-bottom: 15px; line-height: 1.4; }
@@ -153,6 +203,18 @@
 
         /* Utility button */
         .logout-btn { background-color: #ff4444; color: white; border: none; padding: 10px; border-radius: 6px; width: 100%; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px;}
+
+        /* For smaller screens, reduce columns */
+        @media (max-width: 800px) {
+            .pickem-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .pickem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -173,31 +235,30 @@
             <div class="brand">LoBet</div>
             <div class="user-nav">
                 <div class="balance" id="display-balance">$500.00</div>
-                <div class="pfp">👤</div>
+                <div class="header-pfp">👤</div>
             </div>
         </header>
 
         <main>
             <div id="tab-home" class="tab-content active">
                 
-                <h2 class="page-title">LoFantasy Points (Over/Under)</h2>
+                <h2 class="page-title">LoFantasy Points</h2>
                 
-                <div class="pickem-card bet-card">
-                    <div class="pickem-header">
-                        <span class="pfp">LB</span>
-                        <span class="matchup-detail">Alana • Next Date</span>
-                    </div>
-                    <img src="image_2.png" class="pickem-pfp" alt="Alana">
-                    <div class="pickem-info">
-                        <div class="matchup-title">Alana</div>
-                        <div class="matchup-time">@ Next Date • Sat 7:00pm</div>
-                        
+                <div class="pickem-grid">
+                    <div class="pickem-card bet-card" id="card-alana">
+                        <div class="pickem-pfp-container" style="background-image: url('image_2.png');">A</div>
+                        <div class="pickem-subject-details">
+                            <span class="subject-name">Alana</span>
+                            <span class="subject-details">@ Next Date • Sat 7:00pm</span>
+                        </div>
                         <div class="stat-container">
-                            <span class="stat-icon">📈</span> <span class="stat-value">25.5</span>
-                            <span class="stat-symbol-in-circle">👤</span>
+                            <div class="stat-top-icons">
+                                <span class="stat-icon">📈</span>
+                                <span class="stat-symbol-in-circle">👤</span>
+                            </div>
+                            <span class="stat-value">25.5</span>
                             <div class="stat-name">LoFantasy Points</div>
                         </div>
-                        
                         <div class="pick-buttons">
                             <button class="odds-btn pickem-btn">
                                 <span>&#11165; MORE</span>
@@ -209,24 +270,21 @@
                             </button>
                         </div>
                     </div>
-                </div>
-                
-                <div class="pickem-card bet-card">
-                    <div class="pickem-header">
-                        <span class="pfp">LB</span>
-                        <span class="matchup-detail">Aylah • Date Night</span>
-                    </div>
-                    <img src="image_3.png" class="pickem-pfp" alt="Aylah">
-                    <div class="pickem-info">
-                        <div class="matchup-title">Aylah</div>
-                        <div class="matchup-time">@ Date • Fri 8:20pm</div>
-                        
+                    
+                    <div class="pickem-card bet-card" id="card-aylah">
+                        <div class="pickem-pfp-container" style="background-image: url('image_3.png');">A</div>
+                        <div class="pickem-subject-details">
+                            <span class="subject-name">Aylah</span>
+                            <span class="subject-details">@ Date • Fri 8:20pm</span>
+                        </div>
                         <div class="stat-container">
-                            <span class="stat-icon">📈</span> <span class="stat-value">32.5</span>
-                            <span class="stat-symbol-in-circle">👤</span>
+                            <div class="stat-top-icons">
+                                <span class="stat-icon">📈</span>
+                                <span class="stat-symbol-in-circle">👤</span>
+                            </div>
+                            <span class="stat-value">32.5</span>
                             <div class="stat-name">LoFantasy Points</div>
                         </div>
-                        
                         <div class="pick-buttons">
                             <button class="odds-btn pickem-btn">
                                 <span>&#11165; MORE</span>
@@ -235,6 +293,58 @@
                             <button class="odds-btn pickem-btn">
                                 <span>&#11167; LESS</span>
                                 <span class="odds-value">1.62x</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="pickem-card bet-card" id="card-grace">
+                        <div class="pickem-pfp-container">G</div>
+                        <div class="pickem-subject-details">
+                            <span class="subject-name">Grace</span>
+                            <span class="subject-details">@ Cafe Meetup • Fri 2:00pm</span>
+                        </div>
+                        <div class="stat-container">
+                            <div class="stat-top-icons">
+                                <span class="stat-icon">📈</span>
+                                <span class="stat-symbol-in-circle">👤</span>
+                            </div>
+                            <span class="stat-value">20.5</span>
+                            <div class="stat-name">LoFantasy Points</div>
+                        </div>
+                        <div class="pick-buttons">
+                            <button class="odds-btn pickem-btn">
+                                <span>&#11165; MORE</span>
+                                <span class="odds-value">1.88x</span>
+                            </button>
+                            <button class="odds-btn pickem-btn">
+                                <span>&#11167; LESS</span>
+                                <span class="odds-value">1.75x</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="pickem-card bet-card" id="card-zoe">
+                        <div class="pickem-pfp-container">Z</div>
+                        <div class="pickem-subject-details">
+                            <span class="subject-name">Zoe</span>
+                            <span class="subject-details">@ Group Chat • Sun 9:00pm</span>
+                        </div>
+                        <div class="stat-container">
+                            <div class="stat-top-icons">
+                                <span class="stat-icon">📈</span>
+                                <span class="stat-symbol-in-circle">👤</span>
+                            </div>
+                            <span class="stat-value">18.5</span>
+                            <div class="stat-name">LoFantasy Points</div>
+                        </div>
+                        <div class="pick-buttons">
+                            <button class="odds-btn pickem-btn">
+                                <span>&#11165; MORE</span>
+                                <span class="odds-value">1.95x</span>
+                            </button>
+                            <button class="odds-btn pickem-btn">
+                                <span>&#11167; LESS</span>
+                                <span class="odds-value">1.68x</span>
                             </button>
                         </div>
                     </div>
