@@ -68,13 +68,65 @@
         .tab-content.active { display: block; }
         .page-title { margin-bottom: 15px; font-size: 20px; color: var(--text-muted); }
 
-        /* Betting Cards */
+        /* Betting Cards (Base Style) */
         .bet-card {
-            background-color: var(--bg-card); border-radius: 10px; padding: 15px; margin-bottom: 15px;
+            background-color: var(--bg-card); border-radius: 10px; margin-bottom: 15px;
             border: 1px solid var(--border-color);
         }
-        .bet-header { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 10px; text-transform: uppercase;}
-        .bet-title { font-size: 16px; font-weight: 600; margin-bottom: 15px; line-height: 1.4; }
+
+        /* --- Pickem Card Styling --- */
+        .pickem-card {
+            padding: 0; /* Custom inner spacing */
+        }
+        .pickem-header {
+            display: flex; align-items: center; gap: 10px; padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(0,0,0,0.1); /* Slight darker background */
+        }
+        .pickem-header .pfp { margin: 0; width: 30px; height: 30px; font-size: 16px;}
+        .pickem-header .matchup-detail { font-size: 14px; font-weight: 600; color: var(--text-muted); }
+        
+        .pickem-pfp {
+            width: 100%; max-height: 250px; display: block; border-bottom: 1px solid var(--border-color);
+            object-fit: cover; /* Fill space while maintaining aspect */
+        }
+        
+        .pickem-info { padding: 20px; text-align: left; }
+        
+        .matchup-title { font-size: 18px; font-weight: 700; margin-bottom: 5px; color: white;}
+        .matchup-time { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; }
+        
+        /* Stat Presentation (like reference) */
+        .stat-container {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; text-align: center;
+            margin-bottom: 20px; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 15px 0;
+        }
+        .stat-icon { font-size: 20px; color: var(--text-muted); }
+        .stat-value { font-size: 32px; font-weight: 800; color: white; }
+        .stat-symbol-in-circle {
+            width: 18px; height: 18px; border-radius: 50%; background-color: #555;
+            display: flex; align-items: center; justify-content: center; font-size: 10px; border: 1px solid var(--accent);
+        }
+        .stat-name { font-size: 14px; color: var(--text-muted); font-weight: 600; width: 100%; text-transform: uppercase; margin-top: 5px; }
+        
+        /* Pick Buttons (like reference) */
+        .pick-buttons {
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .pickem-btn {
+            display: flex; justify-content: space-between; align-items: center; padding: 12px;
+            font-weight: bold; border-radius: 6px; width: 100%; font-size: 16px; margin: 0; background-color: var(--bg-dark); border: 1px solid var(--border-color); color: white; cursor: pointer; transition: background 0.2s;
+        }
+        .pickem-btn span:first-child { display: flex; align-items: center; gap: 8px; }
+        
+        .pickem-btn:active { background-color: var(--accent); color: black; }
+        .odds-value { color: var(--accent); }
+        .pickem-btn:active .odds-value { color: black; }
+
+        /* --- Traditional Sportsbook Cards --- */
+        .classic-card { padding: 15px; }
+        .classic-header { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 10px; text-transform: uppercase;}
+        .classic-title { font-size: 16px; font-weight: 600; margin-bottom: 15px; line-height: 1.4; }
         .odds-container { display: flex; gap: 10px; }
         .odds-btn {
             flex: 1; background-color: var(--bg-dark); border: 1px solid var(--border-color);
@@ -127,36 +179,97 @@
 
         <main>
             <div id="tab-home" class="tab-content active">
+                
+                <h2 class="page-title">LoFantasy Points (Over/Under)</h2>
+                
+                <div class="pickem-card bet-card">
+                    <div class="pickem-header">
+                        <span class="pfp">LB</span>
+                        <span class="matchup-detail">Alana • Next Date</span>
+                    </div>
+                    <img src="image_2.png" class="pickem-pfp" alt="Alana">
+                    <div class="pickem-info">
+                        <div class="matchup-title">Alana</div>
+                        <div class="matchup-time">@ Next Date • Sat 7:00pm</div>
+                        
+                        <div class="stat-container">
+                            <span class="stat-icon">📈</span> <span class="stat-value">25.5</span>
+                            <span class="stat-symbol-in-circle">👤</span>
+                            <div class="stat-name">LoFantasy Points</div>
+                        </div>
+                        
+                        <div class="pick-buttons">
+                            <button class="odds-btn pickem-btn">
+                                <span>&#11165; MORE</span>
+                                <span class="odds-value">2.03x</span>
+                            </button>
+                            <button class="odds-btn pickem-btn">
+                                <span>&#11167; LESS</span>
+                                <span class="odds-value">1.58x</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pickem-card bet-card">
+                    <div class="pickem-header">
+                        <span class="pfp">LB</span>
+                        <span class="matchup-detail">Aylah • Date Night</span>
+                    </div>
+                    <img src="image_3.png" class="pickem-pfp" alt="Aylah">
+                    <div class="pickem-info">
+                        <div class="matchup-title">Aylah</div>
+                        <div class="matchup-time">@ Date • Fri 8:20pm</div>
+                        
+                        <div class="stat-container">
+                            <span class="stat-icon">📈</span> <span class="stat-value">32.5</span>
+                            <span class="stat-symbol-in-circle">👤</span>
+                            <div class="stat-name">LoFantasy Points</div>
+                        </div>
+                        
+                        <div class="pick-buttons">
+                            <button class="odds-btn pickem-btn">
+                                <span>&#11165; MORE</span>
+                                <span class="odds-value">2.15x</span>
+                            </button>
+                            <button class="odds-btn pickem-btn">
+                                <span>&#11167; LESS</span>
+                                <span class="odds-value">1.62x</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <h2 class="page-title">Featured Lines</h2>
                 
-                <div class="bet-card">
-                    <div class="bet-header">
+                <div class="classic-card bet-card">
+                    <div class="classic-header">
                         <span>Office Romance</span>
                         <span>Closes: Friday</span>
                     </div>
-                    <div class="bet-title">Will Sarah and John officially announce they are dating by the company holiday party?</div>
+                    <div class="classic-title">Will Sarah and John officially announce they are dating by the company holiday party?</div>
                     <div class="odds-container">
-                        <button class="odds-btn">
+                        <button class="odds-btn classic-btn">
                             <span>Yes</span>
                             <span class="odds-value">+150</span>
                         </button>
-                        <button class="odds-btn">
+                        <button class="odds-btn classic-btn">
                             <span>No</span>
                             <span class="odds-value">-200</span>
                         </button>
                     </div>
                 </div>
 
-                <div class="bet-card">
-                    <div class="bet-header">
+                <div class="classic-card bet-card">
+                    <div class="classic-header">
                         <span>The Friend Group</span>
                         <span>Live</span>
                     </div>
-                    <div class="bet-title">Who will Mark text first after his blind date tonight?</div>
+                    <div class="classic-title">Who will Mark text first after his blind date tonight?</div>
                     <div class="odds-container" style="flex-direction: column;">
-                        <button class="odds-btn" style="margin-bottom: 5px;"><span>David (The Best Friend)</span> <span class="odds-value">-110</span></button>
-                        <button class="odds-btn" style="margin-bottom: 5px;"><span>The Group Chat</span> <span class="odds-value">+250</span></button>
-                        <button class="odds-btn"><span>Nobody (Ghost Mode)</span> <span class="odds-value">+400</span></button>
+                        <button class="classic-btn odds-btn" style="margin-bottom: 5px;"><span>David (The Best Friend)</span> <span class="odds-value">-110</span></button>
+                        <button class="classic-btn odds-btn" style="margin-bottom: 5px;"><span>The Group Chat</span> <span class="odds-value">+250</span></button>
+                        <button class="classic-btn odds-btn"><span>Nobody (Ghost Mode)</span> <span class="odds-value">+400</span></button>
                     </div>
                 </div>
             </div>
@@ -173,7 +286,7 @@
 
             <div id="tab-settings" class="tab-content">
                 <h2 class="page-title">Account Settings</h2>
-                <div class="bet-card">
+                <div class="bet-card classic-card">
                     <p style="margin-bottom: 10px;">Logged in as: <span id="user-email-display" style="color: var(--accent);"></span></p>
                     <button class="logout-btn" id="btn-logout">Log Out</button>
                 </div>
