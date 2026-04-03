@@ -21,7 +21,6 @@
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
-            /* Prevent pull-to-refresh on mobile for a native app feel */
             overscroll-behavior-y: contain; 
         }
 
@@ -86,8 +85,8 @@
         /* --- Pickem Grid Layout --- */
         .pickem-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 columns for a row */
-            gap: 10px; /* Space between cards */
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
             margin-bottom: 20px;
         }
 
@@ -103,112 +102,50 @@
 
         /* Profile Image Container */
         .pickem-pfp-container {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid var(--accent);
-            background-color: #555;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 10px;
+            width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent);
+            background-color: #555; background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; font-weight: bold; color: white; margin-bottom: 10px;
         }
 
         /* Subject Details */
-        .pickem-subject-details {
-            text-align: center;
-            margin-bottom: 10px;
-            width: 100%;
-        }
-        .subject-name {
-            font-size: 16px;
-            font-weight: 700;
-            display: block;
-            color: white;
-        }
-        .subject-details {
-            font-size: 11px;
-            color: var(--text-muted);
-            display: block;
-        }
+        .pickem-subject-details { text-align: center; margin-bottom: 10px; width: 100%; }
+        .subject-name { font-size: 16px; font-weight: 700; display: block; color: white; }
+        .subject-details { font-size: 11px; color: var(--text-muted); display: block; }
 
         /* Stat Presentation */
-        .stat-container {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 5px;
-        }
-        .stat-top-icons {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .stat-container { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 5px; margin-bottom: 5px; }
+        .stat-top-icons { display: flex; align-items: center; gap: 8px; }
         .stat-icon { font-size: 16px; color: var(--text-muted); }
         .stat-symbol-in-circle {
             width: 18px; height: 18px; border-radius: 50%; background-color: #555;
             display: flex; align-items: center; justify-content: center; font-size: 10px; border: 1px solid var(--accent);
         }
-        .stat-value { font-size: 24px; font-weight: 800; color: white; }
+        .stat-value { font-size: 24px; font-weight: 800; color: white; transition: color 0.3s;}
         .stat-name { font-size: 10px; color: var(--text-muted); font-weight: 600; width: 100%; text-transform: uppercase; margin-top: 0; }
         
         /* L5 Chart Styling */
-        .l5-container {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 15px;
-        }
+        .l5-container { width: 100%; display: flex; flex-direction: column; align-items: center; margin-bottom: 15px; }
         .l5-title { font-size: 9px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 5px; font-weight: bold;}
         .l5-chart {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            width: 80%;
-            height: 40px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 2px;
+            display: flex; justify-content: space-between; align-items: flex-end; width: 80%;
+            height: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 2px;
         }
-        .l5-bar-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 12px;
-            height: 100%;
-            justify-content: flex-end;
-        }
-        .l5-bar { width: 100%; border-radius: 2px 2px 0 0; min-height: 2px; }
+        .l5-bar-group { display: flex; flex-direction: column; align-items: center; width: 12px; height: 100%; justify-content: flex-end; }
+        .l5-bar { width: 100%; border-radius: 2px 2px 0 0; min-height: 2px; transition: height 0.4s ease, background-color 0.4s ease; }
         .l5-bar.over { background-color: var(--accent); }
         .l5-bar.under { background-color: var(--under-red); }
         .l5-label { font-size: 8px; color: var(--text-muted); margin-top: 3px; }
 
         /* Pick Buttons */
-        .pick-buttons {
-            display: flex;
-            flex-direction: row; 
-            gap: 5px;
-            width: 100%;
-            margin-top: auto; 
-        }
+        .pick-buttons { display: flex; flex-direction: row; gap: 5px; width: 100%; margin-top: auto; }
         .pickem-btn {
-            flex: 1; 
-            padding: 8px;
-            font-size: 12px;
-            justify-content: center;
+            flex: 1; padding: 8px; font-size: 12px; justify-content: center;
             background-color: var(--bg-dark); border: 1px solid var(--border-color); color: white; cursor: pointer; transition: background 0.2s;
             border-radius: 6px;
         }
         .pickem-btn span:first-child { display: flex; align-items: center; gap: 4px; font-size: 10px; }
         .pickem-btn .odds-value { font-size: 12px; color: var(--accent); }
-        
         .pickem-btn:active { background-color: var(--accent); color: black; }
         .pickem-btn:active .odds-value { color: black; }
 
@@ -234,7 +171,7 @@
         }
         .nav-item {
             display: flex; flex-direction: column; align-items: center; color: var(--text-muted);
-            font-size: 12px; cursor: pointer; background: none; border: none; width: 25%;
+            font-size: 12px; cursor: pointer; background: none; border: none; flex: 1; /* Changed to flex: 1 to auto-fit */
         }
         .nav-item span { font-size: 20px; margin-bottom: 4px; filter: grayscale(100%); opacity: 0.7; }
         .nav-item.active { color: var(--accent); font-weight: bold; }
@@ -243,8 +180,7 @@
         /* Modal Styling */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); z-index: 1000;
-            display: flex; justify-content: center; align-items: center;
+            background: rgba(0,0,0,0.8); z-index: 1000; display: flex; justify-content: center; align-items: center;
         }
         .modal-content {
             background: var(--bg-card); padding: 25px; border-radius: 12px;
@@ -258,6 +194,11 @@
         .rules-list span.pts { font-weight: bold; color: var(--accent); }
 
         .logout-btn { background-color: #ff4444; color: white; border: none; padding: 10px; border-radius: 6px; width: 100%; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px;}
+
+        /* Admin Custom Styles */
+        .admin-form-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .admin-input { width: 70px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); padding: 4px 8px; border-radius: 4px; }
+        .l5-select { background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 4px; padding: 2px; }
 
         /* Responsive Grid */
         @media (max-width: 800px) { .pickem-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -288,7 +229,6 @@
 
         <main>
             <div id="tab-home" class="tab-content active">
-                
                 <div class="page-title-container">
                     <h2 class="page-title">LoFantasy Points</h2>
                     <span class="info-icon" onclick="toggleModal(true)">i</span>
@@ -302,29 +242,27 @@
                             <span class="subject-details">@ Next Date • Sat 7:00pm</span>
                         </div>
                         <div class="stat-container">
-                            <span class="stat-value">25.5</span>
+                            <span class="stat-value" id="alana-val">25.5</span>
                             <div class="stat-name">LoFantasy Points</div>
                         </div>
-
                         <div class="l5-container">
                             <div class="l5-title">L5 Games</div>
                             <div class="l5-chart">
-                                <div class="l5-bar-group"><div class="l5-bar under" style="height: 30%;"></div><div class="l5-label">M</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar over" style="height: 70%;"></div><div class="l5-label">T</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar under" style="height: 45%;"></div><div class="l5-label">W</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar over" style="height: 85%;"></div><div class="l5-label">T</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar over" style="height: 65%;"></div><div class="l5-label">F</div></div>
+                                <div class="l5-bar-group"><div id="alana-bar-0" class="l5-bar under" style="height: 30%;"></div><div class="l5-label">M</div></div>
+                                <div class="l5-bar-group"><div id="alana-bar-1" class="l5-bar over" style="height: 70%;"></div><div class="l5-label">T</div></div>
+                                <div class="l5-bar-group"><div id="alana-bar-2" class="l5-bar under" style="height: 45%;"></div><div class="l5-label">W</div></div>
+                                <div class="l5-bar-group"><div id="alana-bar-3" class="l5-bar over" style="height: 85%;"></div><div class="l5-label">T</div></div>
+                                <div class="l5-bar-group"><div id="alana-bar-4" class="l5-bar over" style="height: 65%;"></div><div class="l5-label">F</div></div>
                             </div>
                         </div>
-
                         <div class="pick-buttons">
                             <button class="odds-btn pickem-btn">
                                 <span>&#11165; MORE</span>
-                                <span class="odds-value">2.03x</span>
+                                <span class="odds-value" id="alana-odds-more">2.03x</span>
                             </button>
                             <button class="odds-btn pickem-btn">
                                 <span>&#11167; LESS</span>
-                                <span class="odds-value">1.58x</span>
+                                <span class="odds-value" id="alana-odds-less">1.58x</span>
                             </button>
                         </div>
                     </div>
@@ -336,29 +274,27 @@
                             <span class="subject-details">@ Date • Fri 8:20pm</span>
                         </div>
                         <div class="stat-container">
-                            <span class="stat-value">32.5</span>
+                            <span class="stat-value" id="aylah-val">32.5</span>
                             <div class="stat-name">LoFantasy Points</div>
                         </div>
-
                         <div class="l5-container">
                             <div class="l5-title">L5 Games</div>
                             <div class="l5-chart">
-                                <div class="l5-bar-group"><div class="l5-bar over" style="height: 75%;"></div><div class="l5-label">M</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar under" style="height: 40%;"></div><div class="l5-label">T</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar over" style="height: 85%;"></div><div class="l5-label">W</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar under" style="height: 65%;"></div><div class="l5-label">T</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar over" style="height: 95%;"></div><div class="l5-label">F</div></div>
+                                <div class="l5-bar-group"><div id="aylah-bar-0" class="l5-bar over" style="height: 75%;"></div><div class="l5-label">M</div></div>
+                                <div class="l5-bar-group"><div id="aylah-bar-1" class="l5-bar under" style="height: 40%;"></div><div class="l5-label">T</div></div>
+                                <div class="l5-bar-group"><div id="aylah-bar-2" class="l5-bar over" style="height: 85%;"></div><div class="l5-label">W</div></div>
+                                <div class="l5-bar-group"><div id="aylah-bar-3" class="l5-bar under" style="height: 65%;"></div><div class="l5-label">T</div></div>
+                                <div class="l5-bar-group"><div id="aylah-bar-4" class="l5-bar over" style="height: 95%;"></div><div class="l5-label">F</div></div>
                             </div>
                         </div>
-
                         <div class="pick-buttons">
                             <button class="odds-btn pickem-btn">
                                 <span>&#11165; MORE</span>
-                                <span class="odds-value">2.15x</span>
+                                <span class="odds-value" id="aylah-odds-more">2.15x</span>
                             </button>
                             <button class="odds-btn pickem-btn">
                                 <span>&#11167; LESS</span>
-                                <span class="odds-value">1.62x</span>
+                                <span class="odds-value" id="aylah-odds-less">1.62x</span>
                             </button>
                         </div>
                     </div>
@@ -370,29 +306,27 @@
                             <span class="subject-details">@ Cafe Meetup • Fri 2:00pm</span>
                         </div>
                         <div class="stat-container">
-                            <span class="stat-value">20.5</span>
+                            <span class="stat-value" id="grace-val">20.5</span>
                             <div class="stat-name">LoFantasy Points</div>
                         </div>
-
                         <div class="l5-container">
                             <div class="l5-title">L5 Games</div>
                             <div class="l5-chart">
-                                <div class="l5-bar-group"><div class="l5-bar under" style="height: 40%;"></div><div class="l5-label">M</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar over" style="height: 60%;"></div><div class="l5-label">T</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar over" style="height: 70%;"></div><div class="l5-label">W</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar under" style="height: 25%;"></div><div class="l5-label">T</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar over" style="height: 55%;"></div><div class="l5-label">F</div></div>
+                                <div class="l5-bar-group"><div id="grace-bar-0" class="l5-bar under" style="height: 40%;"></div><div class="l5-label">M</div></div>
+                                <div class="l5-bar-group"><div id="grace-bar-1" class="l5-bar over" style="height: 60%;"></div><div class="l5-label">T</div></div>
+                                <div class="l5-bar-group"><div id="grace-bar-2" class="l5-bar over" style="height: 70%;"></div><div class="l5-label">W</div></div>
+                                <div class="l5-bar-group"><div id="grace-bar-3" class="l5-bar under" style="height: 25%;"></div><div class="l5-label">T</div></div>
+                                <div class="l5-bar-group"><div id="grace-bar-4" class="l5-bar over" style="height: 55%;"></div><div class="l5-label">F</div></div>
                             </div>
                         </div>
-
                         <div class="pick-buttons">
                             <button class="odds-btn pickem-btn">
                                 <span>&#11165; MORE</span>
-                                <span class="odds-value">1.88x</span>
+                                <span class="odds-value" id="grace-odds-more">1.88x</span>
                             </button>
                             <button class="odds-btn pickem-btn">
                                 <span>&#11167; LESS</span>
-                                <span class="odds-value">1.75x</span>
+                                <span class="odds-value" id="grace-odds-less">1.75x</span>
                             </button>
                         </div>
                     </div>
@@ -404,66 +338,39 @@
                             <span class="subject-details">@ Group Chat • Sun 9:00pm</span>
                         </div>
                         <div class="stat-container">
-                            <span class="stat-value">18.5</span>
+                            <span class="stat-value" id="zoe-val">18.5</span>
                             <div class="stat-name">LoFantasy Points</div>
                         </div>
-
                         <div class="l5-container">
                             <div class="l5-title">L5 Games</div>
                             <div class="l5-chart">
-                                <div class="l5-bar-group"><div class="l5-bar over" style="height: 65%;"></div><div class="l5-label">M</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar under" style="height: 55%;"></div><div class="l5-label">T</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar under" style="height: 35%;"></div><div class="l5-label">W</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar over" style="height: 80%;"></div><div class="l5-label">T</div></div>
-                                <div class="l5-bar-group"><div class="l5-bar over" style="height: 95%;"></div><div class="l5-label">F</div></div>
+                                <div class="l5-bar-group"><div id="zoe-bar-0" class="l5-bar over" style="height: 65%;"></div><div class="l5-label">M</div></div>
+                                <div class="l5-bar-group"><div id="zoe-bar-1" class="l5-bar under" style="height: 55%;"></div><div class="l5-label">T</div></div>
+                                <div class="l5-bar-group"><div id="zoe-bar-2" class="l5-bar under" style="height: 35%;"></div><div class="l5-label">W</div></div>
+                                <div class="l5-bar-group"><div id="zoe-bar-3" class="l5-bar over" style="height: 80%;"></div><div class="l5-label">T</div></div>
+                                <div class="l5-bar-group"><div id="zoe-bar-4" class="l5-bar over" style="height: 95%;"></div><div class="l5-label">F</div></div>
                             </div>
                         </div>
-
                         <div class="pick-buttons">
                             <button class="odds-btn pickem-btn">
                                 <span>&#11165; MORE</span>
-                                <span class="odds-value">1.95x</span>
+                                <span class="odds-value" id="zoe-odds-more">1.95x</span>
                             </button>
                             <button class="odds-btn pickem-btn">
                                 <span>&#11167; LESS</span>
-                                <span class="odds-value">1.68x</span>
+                                <span class="odds-value" id="zoe-odds-less">1.68x</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="page-title-container">
-                    <h2 class="page-title">Featured Lines</h2>
-                </div>
-                
+                <div class="page-title-container"><h2 class="page-title">Featured Lines</h2></div>
                 <div class="classic-card bet-card">
-                    <div class="classic-header">
-                        <span>Office Romance</span>
-                        <span>Closes: Friday</span>
-                    </div>
+                    <div class="classic-header"><span>Office Romance</span><span>Closes: Friday</span></div>
                     <div class="classic-title">Will Sarah and John officially announce they are dating by the company holiday party?</div>
                     <div class="odds-container">
-                        <button class="odds-btn classic-btn">
-                            <span>Yes</span>
-                            <span class="odds-value">+150</span>
-                        </button>
-                        <button class="odds-btn classic-btn">
-                            <span>No</span>
-                            <span class="odds-value">-200</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="classic-card bet-card">
-                    <div class="classic-header">
-                        <span>The Friend Group</span>
-                        <span>Live</span>
-                    </div>
-                    <div class="classic-title">Who will Mark text first after his blind date tonight?</div>
-                    <div class="odds-container" style="flex-direction: column;">
-                        <button class="classic-btn odds-btn" style="margin-bottom: 5px;"><span>David (The Best Friend)</span> <span class="odds-value">-110</span></button>
-                        <button class="classic-btn odds-btn" style="margin-bottom: 5px;"><span>The Group Chat</span> <span class="odds-value">+250</span></button>
-                        <button class="classic-btn odds-btn"><span>Nobody (Ghost Mode)</span> <span class="odds-value">+400</span></button>
+                        <button class="odds-btn classic-btn"><span>Yes</span><span class="odds-value">+150</span></button>
+                        <button class="odds-btn classic-btn"><span>No</span><span class="odds-value">-200</span></button>
                     </div>
                 </div>
             </div>
@@ -485,21 +392,96 @@
                     <button class="logout-btn" id="btn-logout">Log Out</button>
                 </div>
             </div>
+
+            <div id="tab-admin" class="tab-content">
+                <div class="page-title-container"><h2 class="page-title" style="color: var(--under-red);">Admin Control Room</h2></div>
+                <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 20px;">Use this panel to adjust player lines. Changes will auto-recalculate odds.</p>
+
+                <div class="bet-card classic-card">
+                    <h3 style="margin-bottom:15px; color:white;">Alana Settings</h3>
+                    <div class="admin-form-row">
+                        <label style="color:var(--text-muted); font-size:14px;">O/U Line:</label>
+                        <input type="number" id="admin-alana-ou" value="25.5" step="0.5" class="admin-input">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="color:var(--text-muted); font-size:14px; display:block; margin-bottom:8px;">L5 Graph (M, T, W, Th, F):</label>
+                        <div style="display:flex; justify-content:space-between;">
+                            <select id="admin-alana-l5-0" class="l5-select"><option value="under" selected>U</option><option value="over">O</option></select>
+                            <select id="admin-alana-l5-1" class="l5-select"><option value="over" selected>O</option><option value="under">U</option></select>
+                            <select id="admin-alana-l5-2" class="l5-select"><option value="under" selected>U</option><option value="over">O</option></select>
+                            <select id="admin-alana-l5-3" class="l5-select"><option value="over" selected>O</option><option value="under">U</option></select>
+                            <select id="admin-alana-l5-4" class="l5-select"><option value="over" selected>O</option><option value="under">U</option></select>
+                        </div>
+                    </div>
+                    <button onclick="updatePlayerStats('alana')" class="logout-btn" style="background:var(--accent); color:black; margin-top:5px;">Update Alana</button>
+                </div>
+
+                <div class="bet-card classic-card">
+                    <h3 style="margin-bottom:15px; color:white;">Aylah Settings</h3>
+                    <div class="admin-form-row">
+                        <label style="color:var(--text-muted); font-size:14px;">O/U Line:</label>
+                        <input type="number" id="admin-aylah-ou" value="32.5" step="0.5" class="admin-input">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="color:var(--text-muted); font-size:14px; display:block; margin-bottom:8px;">L5 Graph (M, T, W, Th, F):</label>
+                        <div style="display:flex; justify-content:space-between;">
+                            <select id="admin-aylah-l5-0" class="l5-select"><option value="over" selected>O</option><option value="under">U</option></select>
+                            <select id="admin-aylah-l5-1" class="l5-select"><option value="under" selected>U</option><option value="over">O</option></select>
+                            <select id="admin-aylah-l5-2" class="l5-select"><option value="over" selected>O</option><option value="under">U</option></select>
+                            <select id="admin-aylah-l5-3" class="l5-select"><option value="under" selected>U</option><option value="over">O</option></select>
+                            <select id="admin-aylah-l5-4" class="l5-select"><option value="over" selected>O</option><option value="under">U</option></select>
+                        </div>
+                    </div>
+                    <button onclick="updatePlayerStats('aylah')" class="logout-btn" style="background:var(--accent); color:black; margin-top:5px;">Update Aylah</button>
+                </div>
+
+                <div class="bet-card classic-card">
+                    <h3 style="margin-bottom:15px; color:white;">Grace Settings</h3>
+                    <div class="admin-form-row">
+                        <label style="color:var(--text-muted); font-size:14px;">O/U Line:</label>
+                        <input type="number" id="admin-grace-ou" value="20.5" step="0.5" class="admin-input">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="color:var(--text-muted); font-size:14px; display:block; margin-bottom:8px;">L5 Graph (M, T, W, Th, F):</label>
+                        <div style="display:flex; justify-content:space-between;">
+                            <select id="admin-grace-l5-0" class="l5-select"><option value="under" selected>U</option><option value="over">O</option></select>
+                            <select id="admin-grace-l5-1" class="l5-select"><option value="over" selected>O</option><option value="under">U</option></select>
+                            <select id="admin-grace-l5-2" class="l5-select"><option value="over" selected>O</option><option value="under">U</option></select>
+                            <select id="admin-grace-l5-3" class="l5-select"><option value="under" selected>U</option><option value="over">O</option></select>
+                            <select id="admin-grace-l5-4" class="l5-select"><option value="over" selected>O</option><option value="under">U</option></select>
+                        </div>
+                    </div>
+                    <button onclick="updatePlayerStats('grace')" class="logout-btn" style="background:var(--accent); color:black; margin-top:5px;">Update Grace</button>
+                </div>
+
+                <div class="bet-card classic-card">
+                    <h3 style="margin-bottom:15px; color:white;">Zoe Settings</h3>
+                    <div class="admin-form-row">
+                        <label style="color:var(--text-muted); font-size:14px;">O/U Line:</label>
+                        <input type="number" id="admin-zoe-ou" value="18.5" step="0.5" class="admin-input">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="color:var(--text-muted); font-size:14px; display:block; margin-bottom:8px;">L5 Graph (M, T, W, Th, F):</label>
+                        <div style="display:flex; justify-content:space-between;">
+                            <select id="admin-zoe-l5-0" class="l5-select"><option value="over" selected>O</option><option value="under">U</option></select>
+                            <select id="admin-zoe-l5-1" class="l5-select"><option value="under" selected>U</option><option value="over">O</option></select>
+                            <select id="admin-zoe-l5-2" class="l5-select"><option value="under" selected>U</option><option value="over">O</option></select>
+                            <select id="admin-zoe-l5-3" class="l5-select"><option value="over" selected>O</option><option value="under">U</option></select>
+                            <select id="admin-zoe-l5-4" class="l5-select"><option value="over" selected>O</option><option value="under">U</option></select>
+                        </div>
+                    </div>
+                    <button onclick="updatePlayerStats('zoe')" class="logout-btn" style="background:var(--accent); color:black; margin-top:5px;">Update Zoe</button>
+                </div>
+
+            </div>
         </main>
 
         <nav class="bottom-nav">
-            <button class="nav-item active" onclick="switchTab('home', this)">
-                <span>🏠</span> Home
-            </button>
-            <button class="nav-item" onclick="switchTab('slips', this)">
-                <span>🧾</span> Slips
-            </button>
-            <button class="nav-item" onclick="switchTab('chat', this)">
-                <span>💬</span> Chat
-            </button>
-            <button class="nav-item" onclick="switchTab('settings', this)">
-                <span>⚙️</span> Settings
-            </button>
+            <button class="nav-item active" onclick="switchTab('home', this)"><span>🏠</span> Home</button>
+            <button class="nav-item" onclick="switchTab('slips', this)"><span>🧾</span> Slips</button>
+            <button class="nav-item" onclick="switchTab('chat', this)"><span>💬</span> Chat</button>
+            <button class="nav-item" onclick="switchTab('settings', this)"><span>⚙️</span> Settings</button>
+            <button class="nav-item hidden" id="nav-admin" onclick="switchTab('admin', this)"><span>🔐</span> Admin</button>
         </nav>
         
         <div id="rules-modal" class="modal-overlay hidden">
@@ -524,7 +506,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
-        // Your provided Firebase Config
         const firebaseConfig = {
             apiKey: "AIzaSyC76kcvy1mou2ZgWuDBxyRuqtZICVFz6Rg",
             authDomain: "lobet-7b058.firebaseapp.com",
@@ -537,24 +518,30 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
-        // View Containers
         const authView = document.getElementById('auth-view');
         const appView = document.getElementById('app-view');
         const userEmailDisplay = document.getElementById('user-email-display');
-
-        // Auth Inputs
         const emailInput = document.getElementById('email');
         const passwordInput = document.getElementById('password');
+        const navAdmin = document.getElementById('nav-admin');
+
+        // ADMIN EMAIL SETUP
+        const ADMIN_EMAIL = "bobbybones581@gmail.com".toLowerCase();
 
         // Handle State Changes
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                // Logged In -> Show App, Hide Auth
                 authView.classList.add('hidden');
                 appView.classList.remove('hidden');
                 userEmailDisplay.innerText = user.email;
+                
+                // Check if user is admin
+                if (user.email.toLowerCase() === ADMIN_EMAIL) {
+                    navAdmin.classList.remove('hidden');
+                } else {
+                    navAdmin.classList.add('hidden');
+                }
             } else {
-                // Logged Out -> Show Auth, Hide App
                 authView.classList.remove('hidden');
                 appView.classList.add('hidden');
                 emailInput.value = '';
@@ -562,7 +549,6 @@
             }
         });
 
-        // Auth Buttons
         document.getElementById('btn-signup').addEventListener('click', () => {
             createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value)
                 .catch((error) => alert(error.message));
@@ -574,41 +560,68 @@
         });
 
         document.getElementById('btn-logout').addEventListener('click', () => {
-            signOut(auth);
+            signOut(auth).then(() => {
+                // Return to home tab so admin tab isn't open for next login
+                switchTab('home', document.querySelector('.nav-item')); 
+            });
         });
 
         // --- Tab Switching Logic ---
         window.switchTab = function(tabName, btnElement) {
-            // Hide all tabs
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            // Show selected tab
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.getElementById('tab-' + tabName).classList.add('active');
-
-            // Update nav styles
-            document.querySelectorAll('.nav-item').forEach(nav => {
-                nav.classList.remove('active');
-            });
+            document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
             btnElement.classList.add('active');
         };
 
         // --- Modal Logic ---
         window.toggleModal = function(show) {
             const modal = document.getElementById('rules-modal');
-            if(show) {
-                modal.classList.remove('hidden');
-            } else {
-                modal.classList.add('hidden');
-            }
+            if(show) { modal.classList.remove('hidden'); } else { modal.classList.add('hidden'); }
         };
-
-        // Close modal if user clicks outside the box
         window.onclick = function(event) {
             const modal = document.getElementById('rules-modal');
-            if (event.target === modal) {
-                toggleModal(false);
+            if (event.target === modal) { toggleModal(false); }
+        };
+
+        // --- Admin Control Logic ---
+        window.updatePlayerStats = function(player) {
+            // 1. Update O/U Line
+            const newOu = document.getElementById(`admin-${player}-ou`).value;
+            const valDisplay = document.getElementById(`${player}-val`);
+            valDisplay.innerText = newOu;
+            
+            // Visual flair for updating
+            valDisplay.style.color = 'var(--accent)';
+            setTimeout(() => { valDisplay.style.color = 'white'; }, 500);
+
+            // 2. Update L5 Bar Charts
+            for(let i=0; i<5; i++) {
+                const selectVal = document.getElementById(`admin-${player}-l5-${i}`).value;
+                const bar = document.getElementById(`${player}-bar-${i}`);
+
+                // Randomize heights slightly based on over/under to look realistic
+                let newHeight;
+                if (selectVal === 'over') {
+                    bar.className = 'l5-bar over';
+                    newHeight = Math.floor(Math.random() * 40) + 60; // 60% to 100% height
+                } else {
+                    bar.className = 'l5-bar under';
+                    newHeight = Math.floor(Math.random() * 30) + 10; // 10% to 40% height
+                }
+                bar.style.height = `${newHeight}%`;
             }
+
+            // 3. Auto-Recalculate Odds
+            // Simulates a sportsbook balancing action (Random multiplier between 1.50x and 2.45x)
+            const newOddsMore = (Math.random() * (2.45 - 1.50) + 1.50).toFixed(2);
+            const newOddsLess = (Math.random() * (2.45 - 1.50) + 1.50).toFixed(2);
+
+            document.getElementById(`${player}-odds-more`).innerText = `${newOddsMore}x`;
+            document.getElementById(`${player}-odds-less`).innerText = `${newOddsLess}x`;
+
+            // Alert Admin
+            alert(`Success! ${player.charAt(0).toUpperCase() + player.slice(1)}'s line was moved to ${newOu}. Odds have been recalculated.`);
         };
     </script>
 </body>
