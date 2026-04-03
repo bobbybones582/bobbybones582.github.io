@@ -3,10 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Website</title>
+    <title>My Account System</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .hidden { display: none; }
+        .auth-box { border: 1px solid #ccc; padding: 20px; max-width: 300px; }
+        input, button { display: block; width: 100%; margin-bottom: 10px; padding: 8px; }
+    </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>Welcome to my brand new GitHub Pages website.</p>
+
+    <h1>Welcome to My Site</h1>
+    
+    <h3 id="user-status">Checking login status...</h3>
+
+    <div id="auth-container" class="auth-box hidden">
+        <input type="email" id="email" placeholder="Email Address">
+        <input type="password" id="password" placeholder="Password">
+        <button id="btn-login">Log In</button>
+        <button id="btn-signup">Sign Up</button>
+    </div>
+
+    <div id="logout-container" class="auth-box hidden">
+        <button id="btn-logout">Log Out</button>
+    </div>
+
+    <script type="module">
+        // 1. Import Firebase tools from the web
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        // 2. PASTE YOUR FIREBASE CONFIG HERE
+        const firebaseConfig = {
+            apiKey: "AIzaSyC76kcvy1mou2ZgWuDBxyRuqtZICVFz6Rg",
+            authDomain: "lobet-7b058.firebaseapp.com",
+            projectId: "lobet-7b058",
+            storageBucket: "lobet-7b058.firebasestorage.app",
+            messagingSenderId: "625857018312",
+            appId: "1:625857018312:web:b80f0b804d856ac34ee8fd"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Grab HTML elements
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const authContainer = document.getElementById('auth-container');
+        const logoutContainer = document.getElementById('logout-container');
+        const userStatus = document.getElementById('user-status');
+
+        // 3. Keep track of user state (This handles the "staying logged in" automatically!)
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                userStatus.innerText = `Logged in as: ${user.email}`;
+                authContainer.classList.add('hidden');
+                logoutContainer.classList.remove('hidden');
+            } else {
+                // User is signed out
+                userStatus.innerText = "You are not logged in.";
+                authContainer.classList.remove('hidden');
+                logoutContainer.classList.add('hidden');
+            }
+        });
+
+        // 4. Sign Up Function
+        document.getElementById('btn-signup').addEventListener('click', () => {
+            createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value)
+                .then(() => alert("Account created successfully!"))
+                .catch((error) => alert(error.message));
+        });
+
+        // 5. Log In Function
+        document.getElementById('btn-login').addEventListener('click', () => {
+            signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value)
+                .then(() => alert("Logged in!"))
+                .catch((error) => alert("Error: Incorrect email or password."));
+        });
+
+        // 6. Log Out Function
+        document.getElementById('btn-logout').addEventListener('click', () => {
+            signOut(auth).then(() => alert("You have been logged out."));
+        });
+    </script>
 </body>
 </html>
