@@ -148,19 +148,105 @@
             padding-bottom: 15px;
         }
 
-        /* Temp Placeholder Content */
         .empty-state {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 60%;
-            color: var(--text-muted);
-            text-align: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; height: 60%; color: var(--text-muted); text-align: center;
         }
         .empty-state span { font-size: 48px; margin-bottom: 15px; opacity: 0.5; }
 
-        /* Profile specific */
+        /* --- Collectible Cards UI --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .collectible-card {
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            aspect-ratio: 2.5 / 3.5; /* Classic trading card ratio */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .collectible-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+        }
+
+        /* Rarity Gradients */
+        .rarity-common {
+            /* Deep vibrant blue */
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            border-color: #3498db;
+        }
+
+        /* Card Layout Elements */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.9);
+            z-index: 2;
+        }
+
+        .card-center {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .card-bg-glow {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .card-emoji {
+            font-size: 80px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+            z-index: 2;
+            line-height: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-size: 10px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .card-owner {
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            max-width: 120px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* --- Profile Tab specific --- */
         .profile-card {
             background-color: var(--bg-card); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color);
             max-width: 400px;
@@ -212,10 +298,26 @@
 
             <div id="tab-cards" class="tab-content">
                 <h2 class="page-title">My Collection</h2>
-                <div class="empty-state">
-                    <span>🃏</span>
-                    <p>Your binder is currently empty.<br>Time to start collecting!</p>
+                
+                <div class="card-grid">
+                    <div class="collectible-card rarity-common">
+                        <div class="card-header">
+                            <span class="card-gen">Test Cards</span>
+                            <span class="card-serial">#236/1000</span>
+                        </div>
+                        
+                        <div class="card-center">
+                            <div class="card-bg-glow"></div>
+                            <div class="card-emoji">😎</div>
+                        </div>
+                        
+                        <div class="card-footer">
+                            <span class="card-owner" id="sample-card-owner">TBD</span>
+                            <span class="card-year">2026</span>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
             <div id="tab-auction" class="tab-content">
@@ -267,6 +369,7 @@
         const authView = document.getElementById('auth-view');
         const appView = document.getElementById('app-view');
         const userEmailDisplay = document.getElementById('user-email-display');
+        const sampleCardOwner = document.getElementById('sample-card-owner');
 
         // Auth Inputs
         const emailInput = document.getElementById('email');
@@ -278,13 +381,21 @@
                 // Logged In -> Show App, Hide Auth
                 authView.classList.add('hidden');
                 appView.classList.remove('hidden');
+                
+                // Update UI with user info
                 userEmailDisplay.innerText = user.email;
+                
+                // Set the sample card owner to the user's handle (before the @ in email)
+                const userHandle = user.email.split('@')[0];
+                sampleCardOwner.innerText = userHandle;
+
             } else {
                 // Logged Out -> Show Auth, Hide App
                 authView.classList.remove('hidden');
                 appView.classList.add('hidden');
                 emailInput.value = '';
                 passwordInput.value = '';
+                sampleCardOwner.innerText = "TBD";
             }
         });
 
